@@ -10,7 +10,7 @@
 | Gabriel Bezerra |26729| requisitos |
 | Paulo Henrique |26633 | modelagem estrutural |
 | Pedro Hebert |26581| modelagem comportamental |
-| Isaac Bispo |26593| testes e rastreabilidade |
+| Isaque Bispo |26593| testes e rastreabilidade |
 
 ## Escopo do módulo (E1)
 

@@ -51,7 +51,6 @@ não executado
 ## Critério de aceite
 
 Passou se a nova triagem e seus dados forem registrados, a classificação anterior permanecer no histórico e o evento `PRIORIDADE_RECLASSIFICADA` for emitido; caso contrário, falhou.
-
 ## Observações
 
 Os dados são ilustrativos para teste e devem respeitar os critérios clínicos do protocolo Manchester. Teste ainda não executado.

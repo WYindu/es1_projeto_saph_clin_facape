@@ -1,4 +1,4 @@
-### **RF-G01-09: Registrar Chamado**
+### **RF-G01-01: Registrar Chamado**
 * **Descrição curta**: Registrar uma nova ocorrência de emergência no acolhimento, coletando obrigatoriamente os dados do solicitante, a localização física do fato e a queixa principal.
 * **Caso de uso**: `CU-01: Registrar Chamado` (Ator Primário: `TASI / Atendente`)
 * **Classe(s)**:
@@ -18,7 +18,7 @@
 
 ---
 
-### **RF-G01-10: Classificar Risco pelo Protocolo de Manchester**
+### **RF-G01-02: Classificar Risco pelo Protocolo de Manchester**
 * **Descrição curta**: Permitir que o Médico Regulador analise os dados clínicos do chamado e atribua o nível de gravidade padronizado em uma das cinco cores do Protocolo de Manchester (Vermelho, Laranja, Amarelo, Verde, Azul).
 * **Caso de uso**: `CU-02: Classificar Risco` (Ator Primário: `Médico Regulador`)
 * **Classe(s)**:
@@ -36,7 +36,7 @@
   * O Médico Regulador seleciona um chamado da fila de espera e analisa a queixa clínica. Ele atribui a gravidade baseada nas 5 cores do Protocolo de Manchester (**Vermelho** \- Emergência, **Laranja** \- Muito Urgente, **Amarelo** \- Urgente, **Verde** \- Pouco Urgente, **Azul** \- Não Urgente). O sistema instancia um objeto de `Triagem`, vincula ao `Chamado` e altera o estado do chamado para **"Classificado"**.
 ---
 
-### **RF-G01-11: Registrar Autor e Justificativa em Reclassificação**
+### **RF-G01-03: Registrar Autor e Justificativa em Reclassificação**
 * **Descrição curta**: Exigir a identificação do Médico Regulador autor e o registro da justificativa clínica detalhada em todas as operações de alteração do nível de risco de um chamado já triado.
 * **Caso de uso**: `CU-03: Reclassificar Chamado` (`<<extend>>` de `CU-02`) (Ator Primário: `Médico Regulador`)
 * **Classe(s)**:
@@ -53,7 +53,7 @@
   * Durante a espera ou atendimento, o quadro do paciente pode se agravar ou melhorar (ex.: paciente que era Amarelo sofre parada cardiorrespiratória e vira Vermelho). Ao alterar a cor, o sistema **bloqueia a ação caso o médico não digite a justificativa clínica**. A operação registra o ID do Médico Regulador e cria um **novo registro de triagem**, sem apagar a classificação anterior.
 ---
 
-### **RF-G01-12: Detectar Chamado Duplicado**
+### **RF-G01-04: Detectar Chamado Duplicado**
 * **Descrição curta**: Identificar a existência de chamados em andamento para a mesma localização e permitir a vinculação da nova ligação ao chamado principal como ocorrência duplicada.
 * **Caso de uso**: `CU-04: Detectar Chamado Duplicado` (Ator Primário: `TASI / Sistema`)
 * **Classe(s)**:
@@ -74,7 +74,7 @@
 
 ---
 
-### **RF-G01-13: Cancelar Chamado com Motivo Obrigatório**
+### **RF-G01-05: Cancelar Chamado com Motivo Obrigatório**
 * **Descrição curta**: Permitir o cancelamento de um chamado aberto ou em triagem mediante o preenchimento obrigatório da justificativa de cancelamento no sistema.
 * **Caso de uso**: `CU-05: Cancelar Chamado` (Ator Primário: `TASI / Médico Regulador`)
 * **Classe(s)**:
@@ -91,7 +91,7 @@
   * Usado em situações de trote, desistência do solicitante ou quando a vítima é socorrida por meios próprios antes da chegada da equipe. O usuário aciona o cancelamento, mas o sistema obriga o preenchimento do **motivo do cancelamento**. O chamado muda para o estado **"Cancelado"** e sai da esteira operacional de atendimento.
 ---
 
-### **RF-G01-14: Manter Histórico Completo de Classificações**
+### **RF-G01-06: Manter Histórico Completo de Classificações**
 * **Descrição curta**: Armazenar e disponibilizar para consulta a linha do tempo imutável com todos os registros de triagem e reclassificações associados a um chamado.
 * **Caso de uso**: `CU-06: Consultar Histórico do Chamado` (Ator Primário: `Médico Regulador / Auditor`)
 * **Classe(s)**:
@@ -109,7 +109,7 @@
 
 ---
 
-### **RF-G01-15: Alertar Tempo MÁXIMO de Triagem (RN-01)**
+### **RF-G01-07: Alertar Tempo MÁXIMO de Triagem (RN-01)**
 * **Descrição curta**: Disparar um alerta visual e sonoro no painel do regulador quando um chamado permanecer mais de 4 minutos no estado "Em Triagem" sem uma classificação atribuída.
 * **Caso de uso**: `CU-07: Monitorar Tempo de Triagem` (Ator Primário: `Sistema / Temporizador`)
 * **Classe(s)**:
@@ -126,7 +126,7 @@
   * Um serviço automatizado em segundo plano (*timer*) checa continuamente os chamados que estão no estado "Em Triagem". Se um chamado ultrapassar **4 minutos** sem que o médico atribua uma cor de risco, o sistema gera um **alerta visual e sonoro destacado no painel do regulador**, chamando a atenção para casos críticos que não podem aguardar na fila.
 ---
 
-### **RF-G01-16: Publicar Evento CHAMADO_CLASSIFICADO para G6**
+### **RF-G01-08: Publicar Evento CHAMADO_CLASSIFICADO para G6**
 * **Descrição curta**: Notificar assincronamente o Módulo G6 enviando o evento `CHAMADO_CLASSIFICADO` contendo o ID e a prioridade do chamado logo após a conclusão da triagem ou reclassificação.
 * **Caso de uso**: `CU-08: Notificar Classificação de Chamado` (Ator Primário: `Sistema / Barramento`)
 * **Classe(s)**:
